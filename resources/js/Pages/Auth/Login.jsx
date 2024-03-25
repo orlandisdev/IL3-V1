@@ -6,6 +6,7 @@ import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { getIcon } from '@/helpers/icons';
 import { IconosEnum } from '@/emun/icons.enum';
+import { router } from '@inertiajs/react'
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -22,6 +23,7 @@ const [errores, setErrores] = useState('')
     const submit = (e) => {
         e.preventDefault();
         if(data.email == '' || data.password == '') setErrores('Rellene todos los campos')
+        router.get('/directory', data.email)
     
     };
 
@@ -48,7 +50,7 @@ const [errores, setErrores] = useState('')
                                 className=" my-1 py-2 block w-1/2 border border-gray-300 "
                                 autoComplete="username"
                                 isFocused={true}
-                                onChange={(e) => setData('usuario', e.target.value)}
+                                onChange={(e) => setData('email', e.target.value)}
                             />
 
                             <InputError message={errors.usuario} className="mt-2" />
@@ -61,9 +63,7 @@ const [errores, setErrores] = useState('')
                                 name="contraseña"
                                 value={data.password}
                                 className=" my-1 py-2 block w-1/2 border-1 border-gray-300 "
-                                autoComplete="username"
-                                isFocused={true}
-                                onChange={(e) => setData('contraseña', e.target.value)}
+                                onChange={(e) => setData('password', e.target.value)}
                             />
                             <InputError message={errors.pwd} className="mt-2" />
                         </div>
