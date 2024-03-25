@@ -14,17 +14,12 @@ export default function Login({ status, canResetPassword }) {
         password: '',
     });
 const [errores, setErrores] = useState('')
-    useEffect(() => {
-        return () => {
-            reset('password');
-        };
-    }, []);
+
 
     const submit = (e) => {
         e.preventDefault();
         if(data.email == '' || data.password == '') setErrores('Rellene todos los campos')
-        router.get('/directory', data.email)
-    
+        router.post('/directory', {user: data.email})
     };
 
     return (

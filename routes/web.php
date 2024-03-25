@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LdapUserController;
+use App\Http\Controllers\AuthController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,13 +28,19 @@ Route::get('/', function () {
     ]);
 });
 
+
+
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/directory', [LdapUserController::class, 'index']);
 
+
+Route::post('/directory', [LdapUserController::class, 'login']);
+
+Route::get('/main', [LdapUserController::class, 'view'])->name('main.view');
 
 
 Route::middleware('auth')->group(function () {
