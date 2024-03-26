@@ -20,7 +20,7 @@ const [errores, setErrores] = useState('')
         e.preventDefault();
         if(data.email == '' || data.password == '') return setErrores('Rellene todos los campos')
        
-        post('login')
+        post('user-login')
     };
 
     return (

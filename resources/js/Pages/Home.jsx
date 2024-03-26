@@ -1,10 +1,23 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
+import Submenu from '@/Components/ui/submenu';
+import Guest from '@/Layouts/GuestLayout';
+import { Link, Head } from '@inertiajs/react';
 
-export default function Home(){
-    return <div>Contenido generado desde React!</div>;
-};
-    
-if(document.getElementById('hello-react')){
-    createRoot(document.getElementById("hello-react")).render(<Home />);    
+export default function Welcome({ auth, laravelVersion, phpVersion }) {
+    return (
+        <>
+            <Guest>
+                <Head title="Inicio" />
+
+                <main className="ml-3">
+
+                    <h1 className='font-bold text-3xl block'>
+                        Facturas
+                    </h1>
+
+                    <Submenu />
+
+                </main>
+            </Guest>
+        </>
+    );
 }
