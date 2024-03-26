@@ -23,7 +23,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Home', [
         'phpVersion' => PHP_VERSION,
-    ]);
+    ])->name('home');
 });
 Route::get('/user-login', [LoginController::class, 'index'])->name('user-login.index');
 Route::post('/user-login', [LoginController::class, 'store'])->name('user-login.store');
